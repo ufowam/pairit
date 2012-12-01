@@ -68,3 +68,9 @@ body {
       #editorspace{
         height: 600px;
       }
+
+      #code{
+        width: 98%;
+        height: 88%;
+        resize: none;
+      }

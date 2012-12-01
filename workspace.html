@@ -13,10 +13,9 @@
     <link rel="stylesheet" href="../assets/lib/codemirror.css">
     <link href="../assets/css/monokai.css" rel="stylesheet">
 
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+<!--[if lt IE 9]>
+          <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
 
     <script src="../assets/js/jquery.js"></script>
     <script src="../assets/js/bootstrap-dropdown.js"></script>
@@ -24,6 +23,8 @@
     <script src="../assets/mode/python/python.js"></script>
     <script src="../assets/mode/javascript/javascript.js"></script>
     <script src="../assets/js/code.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+
   </head>
 
   <body>
@@ -32,10 +33,10 @@
 
       <div class="masthead">
         <ul class="nav nav-pills pull-right">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
         </ul>
-        <h3 class="muted">PairIT</h3>
+        <h3 class="muted">Pair<span style="color: #f92672;">IT</span></h3>
       </div>
 
       <hr>
@@ -74,8 +75,8 @@
       
             <br/>
 
-            <form id="chatsend" target="chat_send" method="POST">
-                <input type="text" class="" name="msg" placeholder="Enter your message"/>
+            <form id="chatsend" action="chat_send" method="POST">
+                <input type="text" class="" name="msg" id="msg" placeholder="Enter your message"/>
                 <div style="text-align: right; margin-right: 10px;">
                   <input type="submit" class="btn btn-medium btn-success" value="Send"/>
                 </div>
@@ -92,7 +93,7 @@
       </div>
 
 
-      <form id="switchpartner" class="pagination-centered" target="switch_p*artner" method="POST">
+      <form id="switchpartner" class="pagination-centered" action="switch_partner" method="POST">
             <!--<input class="input-xlarge" id="name_input" name="username" type="text" placeholder="Enter your name"/>-->
             <br/><br/>
             <input type="submit" class="btn btn-medium btn-success" value="Switch"/>

@@ -19,7 +19,7 @@
 
   <body>
 
-    <div class="container-narrow">
+    <div class="container">
 
       <div class="masthead">
         <ul class="nav nav-pills pull-right">
@@ -31,19 +31,36 @@
 
       <hr>
 
-      <div class="jumbotron well">
-        <h3>Pair programming made easy!</h3>
-        <p class="lead">Initiate a hassle-free, live pair programming session. You don't have to be in the same room.</p>
-        <form id="sessionform" target="create_session" method="POST">
-          <input class="input-xlarge" id="name_input" name="username" type="text" placeholder="Enter your name"/>
-          <br/><br/>
-          <input type="submit" class="btn btn-large btn-success" value="Start a session"/>
-        </form>
+      <div class="row-fluid">
+
+
+        <!-- jumbotron well editorspace -->
+
+        <div class="span8 well" id="editorspace">
+          <h3>Pair programming made easy!</h3>
+          <p class="lead">Initiate a hassle-free, live pair programming session. You don't have to be in the same room.</p>
+          <form id="sessionform" target="create_session" method="POST">
+            <input class="input-xlarge" id="name_input" name="username" type="text" placeholder="Enter your name"/>
+            <br/><br/>
+            <input type="submit" class="btn btn-large btn-success" value="Start a session"/>
+          </form>
+        </div>
+
+        <div class="span4 well" id="chatspace">
+          <h3>Pair programming made easy!</h3>
+          <p class="lead">Initiate a hassle-free, live pair programming session. You don't have to be in the same room.</p>
+          <form id="sessionform" target="create_session" method="POST">
+            <input class="input-xlarge" id="name_input" name="username" type="text" placeholder="Enter your name"/>
+            <br/><br/>
+            <input type="submit" class="btn btn-large btn-success" value="Start a session"/>
+          </form>
+        </div>
+
       </div>
 
       <hr>
 
-      <div class="row-fluid marketing">
+      <!--<div class="row-fluid marketing">
         <div class="span6">
           <h4>Fast.</h4>
           <p>No registration. Create a new session and share the link, we'll bring it live.</p>
@@ -65,7 +82,7 @@
           <h4>Share.</h4>
           <p>When you're done, share the code on gist/github.</p>
         </div>
-      </div>
+      </div>-->
 
       <hr>
 

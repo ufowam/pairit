@@ -40,23 +40,28 @@
         <!-- jumbotron well editorspace -->
 
         <div class="span8 well" id="editorspace">
-          <h3>Pair programming made easy!</h3>
-          <p class="lead">Initiate a hassle-free, live pair programming session. You don't have to be in the same room.</p>
-          <form id="sessionform" target="create_session" method="POST">
-            <input class="input-xlarge" id="name_input" name="username" type="text" placeholder="Enter your name"/>
-            <br/><br/>
-            <input type="submit" class="btn btn-large btn-success" value="Start a session"/>
-          </form>
         </div>
 
         <div class="span4 well" id="chatspace">
-          <h3>Pair programming made easy!</h3>
-          <p class="lead">Initiate a hassle-free, live pair programming session. You don't have to be in the same room.</p>
-          <form id="sessionform" target="create_session" method="POST">
-            <input class="input-xlarge" id="name_input" name="username" type="text" placeholder="Enter your name"/>
-            <br/><br/>
-            <input type="submit" class="btn btn-large btn-success" value="Start a session"/>
-          </form>
+          <div id="chatarea">
+
+            <div id="chatmsg" class="breadcrumb">sdjfhskjdhgsd</div>
+      
+            <br/>
+
+            <form id="chatsend" target="chat_send" method="POST">
+                <input type="text" class="" name="msg" placeholder="Enter your message"/>
+                <div style="text-align: right; margin-right: 10px;">
+                  <input type="submit" class="btn btn-medium btn-success" value="Send"/>
+                </div>
+            </form>
+          </div>
+
+          <div id="userlist">
+            <center>
+              <h5>Users</h5>
+            </center>
+          </div>
         </div>
 
       </div>

@@ -10,11 +10,19 @@
     <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="../assets/css/darkstrap.css" rel="stylesheet">
     <link href="../assets/css/style.css" rel="stylesheet">
+    <script src="../assets/js/jquery.js"></script>
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+
+          $('#name_input').focus();
+      });
+    </script>
   </head>
 
   <body>
@@ -35,7 +43,6 @@
         <h3>Pair programming made easy!</h3>
         <p class="lead">Initiate a hassle-free, live pair programming session. You don't have to be in the same room.</p>
         <form id="sessionform" action="create_session" method="POST">
-          <input class="input-xlarge" id="name_input" name="username" type="text" placeholder="Enter your name"/>
           <br/><br/>
           <input type="submit" class="btn btn-large btn-success" value="Start a session"/>
         </form>

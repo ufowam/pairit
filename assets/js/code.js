@@ -22,15 +22,22 @@ function sendCode(from, to, text, next) {
 
 
 $(document).ready(function() {
-	
+
+
 	$('#files').on('change', handleFileSelect);
+	$('#code').on('dragover', handleDragOver);
+	$('#code').on('drop', handleDragOn);
+
 	roomID = matchRoomRequest.exec(document.URL)[1];
 	$('#uploadDummyForm').on('submit', function() {
-		$('#uploadModal').modal('show');
+		if (username != null && username == driver) {
+			alert(username == driver);
+			$('#uploadModal').modal('show');
+		}
 		return false;
 	});
-	$("#uploadForm").on('submit', function(){
-		
+	$("#uploadForm").on('submit', function() {
+
 		editor.setValue(uploadClipBoard);
 		$('#uploadModal').modal('hide');
 		return false;
@@ -56,22 +63,53 @@ $(document).ready(function() {
 	$('#myModal').modal('show');
 
 });
+
+function handleDragOn(evt) {
+	if (username != null && username != driver)
+		return;
+	evt.stopPropagation();
+	evt.preventDefault();
+
+	var files = evt.dataTransfer.files;
+	var output = [];
+	for (var i = 0, f; f = files[i]; i++) {
+		output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ', f.size, ' bytes, last modified: ', f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a', '</li>');
+	}
+	editor.setValue("");
+	editor.setValue('<ul>' + output.join('') + '</ul>');
+}
+
+function handleDragOver(evt) {
+	if (username != null && username != driver)
+		return;
+	evt.stopPropagation();
+	evt.preventDefault();
+	evt.dataTransfer.dropEffect = 'copy';
+}
+
+/**
+ * Read a local file from the evt.
+ * @param {Object} evt
+ */
 function handleFileSelect(evt) {
-	
-    var files = evt.target.files; // FileList object
-    for (var i = 0, f; f = files[i]; i++) {
 
-      var reader = new FileReader();
+	if (username != null && username != driver)
+		return;
+	var files = evt.target.files;
+	// FileList object
+	for (var i = 0, f; f = files[i]; i++) {
 
-      // Closure to capture the file information.
-      reader.onload = (function(theFile) {
-        return function(e) {
-			uploadClipBoard = e.target.result;
-        };
-      })(f);
-      reader.readAsText(f);
-    }
-  }
+		var reader = new FileReader();
+
+		// Closure to capture the file information.
+		reader.onload = (function(theFile) {
+			return function(e) {
+				uploadClipBoard = e.target.result;
+			};
+		})(f);
+		reader.readAsText(f);
+	}
+}
 
 function setUpEditor() {
 

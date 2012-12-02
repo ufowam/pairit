@@ -217,7 +217,7 @@ function comm() {
 		if (nav && nav == username) {
 			editor.setOption("readOnly", "nocursor");
 
-			socket.emit('sync'{
+			socket.emit('sync', {
 				'roomID': roomID
 			});
 		}

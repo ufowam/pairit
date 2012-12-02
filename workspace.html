@@ -21,6 +21,7 @@
     <script src="../assets/js/bootstrap-dropdown.js"></script>
     <script src="../assets/js/bootstrap-modal.js"></script>
      <script src="../assets/js/bootstrap-alert.js"></script>
+      <script src="../assets/js/bootstrap-tooltip.js"></script>
     <script src="../assets/lib/codemirror.js"></script>
     <script src="../assets/mode/python/python.js"></script>
     <script src="../assets/mode/javascript/javascript.js"></script>
@@ -30,7 +31,7 @@
   </head>
 
   <body>
-
+<a href="#" rel="tooltip" title="first tooltip" data-placement="left">hover over me</a>
     <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -38,6 +39,9 @@
       </div>
 
       <div class="modal-body">
+        <script type="text/javascript">
+    $("[rel=tooltip]").tooltip();
+</script>
         <form id="nameform" action="name_send" method="POST">
           <input name="userName" class="well" id="username" placeholder="Your name goes here"/>&nbsp;&nbsp;&nbsp;&nbsp;
           <input type="submit" class="btn btn-large btn-primary" value="Start"/>
@@ -87,7 +91,7 @@
                   </ul>
               </li>
 
-              <li class="active"><a href="#">Check Syntax</a></li>
+              <li class="active"><a href="#" id="runlint">Check Syntax</a></li>
             </ul>
 
             <div id="role" style="float: right;">

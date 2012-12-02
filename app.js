@@ -47,6 +47,8 @@ var matchRoomRequest = /\/room\/(.{32})/;;
 
             break;
 
+    
+
         default:
 
             request.addListener('end', function () {
@@ -141,6 +143,33 @@ io.sockets.on('connection', function (socket) {
              'driver': drivers[data.roomID]
         });
 
+    });
+
+
+    socket.on('runlint', function(data){
+
+        var fs = require('fs');
+
+        var fileName = /tmp/ + md5h(new Date().getTime()) + ".txt";
+
+        fs.writeFile(fileName, data.code, function(err) {
+    
+            if(err) {
+                console.log(err);
+            } else {
+                console.log("The file was saved!");
+            }
+
+        });
+
+
+        var exec = require('child_process').exec;
+        exec('python lint.py ' + fileName, function callback(error, stdout, stderr){
+
+            io.sockets.in(data.roomID).emit('lintresult', {
+                'result': stdout
+            });
+        });
     });
 
 });

@@ -84,3 +84,12 @@ body {
       .clear{
         clear: both;
       }
+
+      .errorLine{
+        text-decoration: none;
+        color:red !important;
+      }
+
+      .errorLine:hover{
+        text-decoration: none;
+       } 

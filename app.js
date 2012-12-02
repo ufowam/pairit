@@ -6,7 +6,8 @@ var app = require('http').createServer(handler),
     md5h = require('MD5'),
     allclients = {},
     drivers = {},
-    navigators = {};
+    navigators = {},
+    lastCode = "";
 
 
 var fileServer = new static.Server('./');
@@ -113,6 +114,8 @@ io.sockets.on('connection', function (socket) {
 
         io.sockets.in(data.roomID).emit('codereceive', data);
 
+        lastCode = data.code;
+
         console.log(data);
     });
 
@@ -170,6 +173,15 @@ io.sockets.on('connection', function (socket) {
                 'result': stdout
             });
         });
+    });
+
+    socket.on('sync', function(data){
+
+        data['code'] = lastCode;
+        data['navigator'] = navigators[data.roomID];
+        data['driver'] = drivers[data.roomID];
+        
+        io.sockets.in(data.roomID).emit('codereceive', data);
     });
 
 });

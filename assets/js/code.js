@@ -216,6 +216,10 @@ function comm() {
 
 		if (nav && nav == username) {
 			editor.setOption("readOnly", "nocursor");
+
+			socket.emit('sync'{
+				'roomID': roomID
+			});
 		}
 
 		updateRole(driver);

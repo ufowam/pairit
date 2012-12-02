@@ -24,7 +24,6 @@ function sendCode(from, to, text, next) {
 
 $(document).ready(function() {
 
-
 	$('#files').on('change', handleFileSelect);
 	$('#code').on('dragover', handleDragOver);
 	$('#code').on('drop', handleDragOn);
@@ -36,6 +35,10 @@ $(document).ready(function() {
 		}
 		return false;
 	});
+	$('#inviteDummyForm').on('submit', function() {
+		$('#inviteModal').modal('show');
+		return false;
+	});
 	$("#uploadForm").on('submit', function() {
 
 		editor.setValue(uploadClipBoard);
@@ -43,24 +46,22 @@ $(document).ready(function() {
 		return false;
 	});
 
-	$('#runlint').on('click', function(){
+	$('#runlint').on('click', function() {
 
-		
-		if(username == driver){
+		if (username == driver) {
 
-
-			if(language == "python"){
+			if (language == "python") {
 
 				socket.emit('runlint', {
-					'code': editor.getValue(),
-					'roomID': roomID
+					'code' : editor.getValue(),
+					'roomID' : roomID
 				});
 
-			}else{
+			} else {
 				$('#alertMsg').html('<div class="alert"><button type="button" class="close" data-dismiss="alert">×</button><strong>Error!</strong> Checker currently only supports Python.</div>');
 			}
 
-		}else{
+		} else {
 			$('#alertMsg').html('<div class="alert"><button type="button" class="close" data-dismiss="alert">×</button><strong>Error!</strong> Only the driver can run the lint.</div>');
 
 		}
@@ -79,34 +80,33 @@ $(document).ready(function() {
 
 		window.setInterval(function() {
 			socket.emit('getusers', {
-			'name' : username,
-			'roomID' : roomID
+				'name' : username,
+				'roomID' : roomID
 			});
 		}, 2000);
 
 		return false;
 	});
-	
-	
-	$('#switchpartner').on('submit', function(){
 
-		if(username == driver){
+	$('#switchpartner').on('submit', function() {
 
-			if(nav){
+		if (username == driver) {
 
-			socket.emit('switchpartner', {
-				'driver': driver,
-				'username': username,
-				'roomID': roomID
-			});	
+			if (nav) {
 
-			}else{
-				$('#alertMsg').html('<div class="alert"><button type="button" class="close" data-dismiss="alert">×</button><strong>Error!</strong> A navigator hasn\'t joined yet.</div>');		
+				socket.emit('switchpartner', {
+					'driver' : driver,
+					'username' : username,
+					'roomID' : roomID
+				});
+
+			} else {
+				$('#alertMsg').html('<div class="alert"><button type="button" class="close" data-dismiss="alert">×</button><strong>Error!</strong> A navigator hasn\'t joined yet.</div>');
 			}
 
-		}else{
+		} else {
 			$('#alertMsg').html('<div class="alert"><button type="button" class="close" data-dismiss="alert">×</button><strong>Error!</strong> Only the driver can swtich modes.</div>');
-		
+
 		}
 
 		return false;
@@ -199,7 +199,7 @@ function comm() {
 	//var url = 'http://localhost:9000';
 	var doc = $(document), win = $(window), textbox = $('#text');
 
-	var url = 'http://192.168.43.235:9000/';
+	var url = 'http://localhost:9000/';
 
 	socket = io.connect(url);
 
@@ -218,7 +218,7 @@ function comm() {
 			editor.setOption("readOnly", "nocursor");
 
 			socket.emit('sync', {
-				'roomID': roomID
+				'roomID' : roomID
 			});
 		}
 
@@ -271,28 +271,27 @@ function comm() {
 		}
 	});
 
-	socket.on('rolechange', function (data){
+	socket.on('rolechange', function(data) {
 		driver = data.driver;
 		nav = data.nav;
 
 		updateRole(driver);
 
-		if(username == driver){
+		if (username == driver) {
 			editor.setOption("readOnly", false);
-		}else{
+		} else {
 			editor.setOption("readOnly", "nocursor");
 		}
 	});
 
-
-	socket.on('lintresult', function (data){
+	socket.on('lintresult', function(data) {
 		var p = JSON.parse(data.result);
 
 		//alert(errorLines.length);
 
-		for(var i=0; i<errorLines.length; i++){
+		for (var i = 0; i < errorLines.length; i++) {
 			//alert(editor.getLineHandle(errorLines[i]-1));
-			editor.clearMarker(editor.getLineHandle(errorLines[i]-1));
+			editor.clearMarker(editor.getLineHandle(errorLines[i] - 1));
 		}
 
 		//alert("ere")
@@ -302,17 +301,16 @@ function comm() {
 		//alert(p);
 
 		for (var key in p) {
- 			if (p.hasOwnProperty(key)) {
+			if (p.hasOwnProperty(key)) {
 
+				errorLines.push(key);
+				editor.setMarker(editor.getLineHandle(key - 1), '<a href="#" rel="tooltip" data-placement="right" class="errorLine" title="' + p[key] + '">●</a>');
 
- 				errorLines.push(key);
- 				editor.setMarker(editor.getLineHandle(key-1), '<a href="#" rel="tooltip" data-placement="right" class="errorLine" title="' + p[key] +'">●</a>'); 
-
-    		//	alert(key + " -> " + p[key]);
-  			}
+				//	alert(key + " -> " + p[key]);
+			}
 		}
 
-	$("[rel=tooltip]").tooltip();
+		$("[rel=tooltip]").tooltip();
 
 	});
 

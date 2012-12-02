@@ -176,11 +176,11 @@ io.sockets.on('connection', function (socket) {
     });
 
     socket.on('sync', function(data){
-
+    //
         data['code'] = lastCode;
         data['navigator'] = navigators[data.roomID];
         data['driver'] = drivers[data.roomID];
-        
+
         io.sockets.in(data.roomID).emit('codereceive', data);
     });
 

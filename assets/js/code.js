@@ -199,7 +199,7 @@ function comm() {
 	//var url = 'http://localhost:9000';
 	var doc = $(document), win = $(window), textbox = $('#text');
 
-	var url = 'http://localhost:9000/';
+	var url = 'http://192.168.43.235:9000/';
 
 	socket = io.connect(url);
 

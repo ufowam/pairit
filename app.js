@@ -7,7 +7,7 @@ var app = require('http').createServer(handler),
     allclients = {},
     drivers = {},
     navigators = {},
-    lastCode = "";
+    lastCode = {};
 var nodemailer = require("nodemailer");
 var qs = require('querystring');
 
@@ -175,7 +175,7 @@ io.sockets.on('connection', function (socket) {
 
         io.sockets.in(data.roomID).emit('codereceive', data);
 
-        lastCode = data.code;
+        lastCode[data.roomID] = data.code;
 
         console.log(data);
     });
@@ -238,7 +238,7 @@ io.sockets.on('connection', function (socket) {
 
     socket.on('sync', function(data){
     //
-        data['code'] = lastCode;
+        data['code'] = lastCode[data.roomID];
         data['navigator'] = navigators[data.roomID];
         data['driver'] = drivers[data.roomID];
 

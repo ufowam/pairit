@@ -71,8 +71,6 @@ function comm(){
 
 	roomID = matchRoomRequest.exec(document.URL)[1];
 
-	alert(roomID);
-
 	var url = 'http://localhost:9000/';
 
 	socket = io.connect(url);
@@ -114,4 +112,16 @@ function comm(){
 		//	editor.setValue(data.code);
 		//}
 	});
+
+	socket.on('sendusers', function (data){
+		
+	});
+
+	window.setInterval(function(){
+		socket.emit('getusers', {
+			'name': username,
+			'roomID': roomID
+		});
+	}, 2000);
+
 }

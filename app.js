@@ -4,7 +4,7 @@ var app = require('http').createServer(handler),
     io = require('socket.io').listen(app),
     static = require('node-static'),
     md5h = require('MD5'),
-    clients = {};
+    allclients = {};
 
 var fileServer = new static.Server('./');
     
@@ -66,7 +66,10 @@ io.sockets.on('connection', function (socket) {
         console.log("User id:" + socket.id);
 
         socket.join(data.roomID);
-        clients[socket.id] = data.name;
+        allclients[socket.id.toString()] = data.name;
+
+
+        console.log(allclients[socket.id.toString()]);
     });
 
     socket.on('chatsend', function (data) {
@@ -83,12 +86,19 @@ io.sockets.on('connection', function (socket) {
 
     socket.on('getusers', function(data){
 
-        socket_ids = io.sockets.in(data.roomID);
-        console.log("requesting users: " + data.roomID);
-        //for (id in socket_ids){
+        socket_ids = io.sockets.clients(data.roomID);
+        var response = new Array();
+        //console.log("requesting users: " + data.roomID);
+        //console.log("socket_ids:   " + socket_ids);
 
-        //}
-        //socket.emit('send_users')
+        for(var i=0; i<socket_ids.length; i++){
+            response.push(allclients[socket_ids[i].id]);
+        }
+
+        socket.emit('sendusers', {
+            'users': response
+        });
+
     });
 
 });

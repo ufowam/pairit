@@ -29,4 +29,12 @@ $(document).ready(function() {
 		});
 		return false;
 	});
+
+
+
+	$('#download_raw').on('click', function(){
+		$('#filecontents').val(editor.getValue());
+
+		$('#rawForm').submit();
+	});
 });

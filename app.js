@@ -48,7 +48,25 @@ var matchRoomRequest = /\/room\/(.{32})/;;
 
             break;
 
-    
+        case request.url == "/download":
+
+            var filedata;
+
+            request.addListener('data', function (data) {
+                filedata = data.toString().split('=')[1];
+
+            });
+
+            request.addListener('end', function(){
+
+                response.setHeader("Content-Disposition", "attachment");
+                response.setHeader("flename", "export.txt");
+                response.setHeader("Content-Type", "text/plain");
+                response.end(unescape(filedata));
+            });
+
+
+            break;
 
         default:
 

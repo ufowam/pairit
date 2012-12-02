@@ -26,6 +26,7 @@
     <script src="../assets/mode/javascript/javascript.js"></script>
     <script src="../assets/js/code.js"></script>
     <script src="../assets/js/switch_language.js"></script>
+    <script src="../assets/js/download_file.js"></script>
     <script src="/socket.io/socket.io.js"></script>
 
   </head>
@@ -43,6 +44,41 @@
           <input name="userName" class="well" id="username" placeholder="Your name goes here"/>&nbsp;&nbsp;&nbsp;&nbsp;
           <input type="submit" class="btn btn-large btn-primary" value="Start"/>
         </form>
+      </div>
+  
+      <div class="modal-footer">
+        
+      </div>
+    </div>
+
+
+    <div id="upload_gist" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 id="myModalLabel">GIST</h4>
+      </div>
+
+      <div class="modal-body">
+        <form id="download_gist" action="#" method="POST">
+          <input name="filename" class="well" id="filename" placeholder="Your filename goes here"/></br>
+          <input name="description" class="well" id="description" placeholder="Your description goes here"/>&nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="submit" class="btn btn-large btn-primary" value="Get gist Link"/>
+        </form>
+      </div>
+  
+      <div class="modal-footer">
+        
+      </div>
+    </div>
+
+    <div id="gist_url_div" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 id="myModalLabel">GIST</h4>
+      </div>
+
+      <div class="modal-body">
+        <p id="gist_url" class="well"></p>
       </div>
   
       <div class="modal-footer">
@@ -188,8 +224,8 @@
             </button>
 
             <ul class="dropdown-menu">
-              <li> <a href="#">Raw</a> </li>
-              <li> <a href="#">Gist</a> </li>
+              <li> <a id="download_raw" href="#">Raw</a> </li>
+              <li> <a href="#upload_gist" role="button" class="btn" data-toggle="modal">Gist</a> </li>
             </ul>
 
           </div>

@@ -3,7 +3,8 @@
 var app = require('http').createServer(handler),
     io = require('socket.io').listen(app),
     static = require('node-static'),
-    md5h = require('MD5');
+    md5h = require('MD5'),
+    clients = {};
 
 var fileServer = new static.Server('./');
     
@@ -62,8 +63,10 @@ io.sockets.on('connection', function (socket) {
     socket.on('joinroom', function(data){
 
         console.log("User joined:" + data.roomID);
+        console.log("User id:" + socket.id);
 
         socket.join(data.roomID);
+        clients[socket.id] = data.name;
     });
 
     socket.on('chatsend', function (data) {

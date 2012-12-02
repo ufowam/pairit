@@ -3,6 +3,7 @@ var language = "python";
 var editor;
 var username;
 var elem;
+var roomID;
 
 $(document).ready(function() {
 
@@ -55,7 +56,7 @@ function comm(){
 
 	var matchRoomRequest = /.*\/room\/(.{32})/;
 
-	var roomID = matchRoomRequest.exec(document.URL)[1];
+	roomID = matchRoomRequest.exec(document.URL)[1];
 
 	alert(roomID);
 

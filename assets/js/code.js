@@ -8,7 +8,7 @@ $(document).ready(function() {
 
 	elem = $('#chatmsg');
 
-	$('#username').val("test");
+	$('#username').val("John Smith");
 
 	$('#nameform').on('submit', function() {
 
@@ -59,7 +59,7 @@ function comm(){
 
 	alert(roomID);
 
-	var url = 'http://192.168.43.235:9000/';
+	var url = 'http://localhost:9000/';
 
 	var socket = io.connect(url);
 
@@ -88,7 +88,8 @@ function comm(){
 	socket.on('chatreceive', function(data){
 		//alert(data.text);
 		$("#chatmsg").html($("#chatmsg").html() + data.name + ": " + data.msg + "<br/>");
+		var elem = document.getElementById("chatmsg");
+		elem.scrollTop = elem.scrollHeight;
 
-  		elem.scrollTop = elem.scrollHeight;
 	});
 }

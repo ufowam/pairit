@@ -62,6 +62,17 @@ function setUpEditor(){
 
 }
 
+
+function updateRole(driver){
+
+	if(driver == username){
+		$('#currentrole').html("<span style='color: #a6e22e'>Driver</span>");
+
+	}else{
+		$('#currentrole').html("<span style='color: #D52664'>Navigator</span>");
+	}
+}
+
 function comm(){
 
 	// The URL of your web server (the port is set in app.js)
@@ -90,6 +101,8 @@ function comm(){
 		if(nav && nav == username){
 			editor.setOption("readOnly", "nocursor");
 		}
+
+		updateRole(driver);
 	});
 
 	$('#chatsend').on('submit', function() {

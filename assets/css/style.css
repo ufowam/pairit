@@ -75,3 +75,7 @@ body {
         height: 88%;
         resize: none;
       }
+
+      .clear{
+        clear: both;
+      }

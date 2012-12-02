@@ -114,7 +114,11 @@ function comm(){
 	});
 
 	socket.on('sendusers', function (data){
-		
+		var listusers = $('#listusers');
+		listusers.empty();
+		for (i = 0; i< data.users.length; i++){
+			listusers.append('<li>' + data.users[i] + '</li>');
+		}
 	});
 
 	window.setInterval(function(){

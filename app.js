@@ -19,15 +19,12 @@ var matchRoomRequest = /\/room\/(.{32})/;;
 
             var roomID;
 
-            request.addListener('data', function(data){
-                roomID = md5h(new Date().getTime() + );
-
-
-
-            });
 
             request.addListener('end', function () {
+
+                roomID = md5h(new Date().getTime());
                 response.writeHead(302, {
+                    
                     'Location' : 'room/' + roomID
                 });
 

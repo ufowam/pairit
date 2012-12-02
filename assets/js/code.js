@@ -1,14 +1,39 @@
 
 var language = "python";
 var editor;
+var username;
+var elem;
 
 $(document).ready(function() {
 
-	setUpEditor();
+	elem = $('#chatmsg');
 
-	comm();
+	$('#username').val("test");
+
+	$('#nameform').on('submit', function() {
+
+		username = $('#username').val();
+
+		$('#myModal').modal('hide');	
+
+		setUpEditor();
+
+		comm();
+
+		return false;
+	});
+
+	//setUpEditor();
+
+	//comm();
+
+	$('#myModal').modal('show');
+
+
 
 });
+
+
 
 function setUpEditor(){
 
@@ -41,15 +66,19 @@ function comm(){
 	//alert(matchRoomRequest.exec(document.URL)[1]);
 
 	socket.emit('joinroom', {
-		'roomID' : roomID
+		'roomID' : roomID,
+		'name' : username
 	});
 
 	$('#chatsend').on('submit', function() {
 
 		socket.emit('chatsend', {
+			'name' : username,
 			'msg': $('#msg').val(),
 			'roomID' : roomID
 		});
+
+		//$("#chatmsg").html($("#chatmsg").html() + username + ": " + $('#msg').val() + "<br/>");
 
 		$("#msg").val("");
 
@@ -58,6 +87,8 @@ function comm(){
 
 	socket.on('chatreceive', function(data){
 		//alert(data.text);
-		textbox.val(data.text);
+		$("#chatmsg").html($("#chatmsg").html() + data.name + ": " + data.msg + "<br/>");
+
+  		elem.scrollTop = elem.scrollHeight;
 	});
 }

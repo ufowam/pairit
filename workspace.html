@@ -19,6 +19,7 @@
 
     <script src="../assets/js/jquery.js"></script>
     <script src="../assets/js/bootstrap-dropdown.js"></script>
+    <script src="../assets/js/bootstrap-modal.js"></script>
     <script src="../assets/lib/codemirror.js"></script>
     <script src="../assets/mode/python/python.js"></script>
     <script src="../assets/mode/javascript/javascript.js"></script>
@@ -29,7 +30,23 @@
 
   <body>
 
-    
+    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 id="myModalLabel">Please enter your name</h4>
+      </div>
+
+      <div class="modal-body">
+        <form id="nameform" action="name_send" method="POST">
+          <input name="userName" class="well" id="username" placeholder="Your name goes here"/>&nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="submit" class="btn btn-large btn-primary" value="Start"/>
+        </form>
+      </div>
+  
+      <div class="modal-footer">
+        
+      </div>
+    </div>
 
     <div class="container">
 
@@ -73,7 +90,7 @@
         <div class="span4 well" id="chatspace">
           <div id="chatarea">
 
-            <div id="chatmsg" class="breadcrumb">sdjfhskjdhgsd</div>
+            <div id="chatmsg" class="breadcrumb"></div>
       
             <br/>
 

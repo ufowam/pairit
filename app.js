@@ -129,4 +129,18 @@ io.sockets.on('connection', function (socket) {
 
     });
 
+    socket.on('switchpartner', function(data){
+
+        drivers[data.roomID] = navigators[data.roomID];
+
+        navigators[data.roomID] = data.driver;
+
+        io.sockets.in(data.roomID).emit('rolechange', {
+           
+           'nav': navigators[data.roomID],
+             'driver': drivers[data.roomID]
+        });
+
+    });
+
 });

@@ -35,6 +35,38 @@ $(document).ready(function() {
 
 		setUpEditor();
 
+		window.setInterval(function() {
+			socket.emit('getusers', {
+			'name' : username,
+			'roomID' : roomID
+			});
+		}, 2000);
+
+		return false;
+	});
+	
+	
+	$('#switchpartner').on('submit', function(){
+
+		if(username == driver){
+
+			if(nav){
+
+			socket.emit('switchpartner', {
+				'driver': driver,
+				'username': username,
+				'roomID': roomID
+			});	
+
+			}else{
+				$('#alertMsg').html('<div class="alert"><button type="button" class="close" data-dismiss="alert">×</button><strong>Error!</strong> A navigator hasn\'t joined yet.</div>');		
+			}
+
+		}else{
+			$('#alertMsg').html('<div class="alert"><button type="button" class="close" data-dismiss="alert">×</button><strong>Error!</strong> Only the driver can swtich modes.</div>');
+		
+		}
+
 		return false;
 	});
 
@@ -155,11 +187,17 @@ function comm(){
 		}
 	});
 
-	window.setInterval(function(){
-		socket.emit('getusers', {
-			'name': username,
-			'roomID': roomID
-		});
-	}, 2000);
+	socket.on('rolechange', function (data){
+		driver = data.driver;
+		nav = data.nav;
+
+		updateRole(driver);
+
+		if(username == driver){
+			editor.setOption("readOnly", false);
+		}else{
+			editor.setOption("readOnly", "nocursor");
+		}
+	});
 
 }

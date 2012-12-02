@@ -1,4 +1,3 @@
-
 var language = "python";
 var editor;
 var username;
@@ -6,30 +5,49 @@ var elem;
 var roomID;
 var socket;
 var driver = null, nav = null;
+var matchRoomRequest = /.*\/room\/(.{32})/;
+var uploadClipBoard = "";
+function sendCode(from, to, text, next) {
 
-function sendCode(from, to, text, next){
-	
-	if(username == driver){	
+	if (username == driver) {
 		socket.emit('codesend', {
 			'name' : username,
-			'code': editor.getValue(),
+			'code' : editor.getValue(),
 			'roomID' : roomID
 		});
 	}
 
-		return false;
+	return false;
 }
 
 
 $(document).ready(function() {
 
-	elem = $('#chatmsg');
+
+	$('#files').on('change', handleFileSelect);
+	$('#code').on('dragover', handleDragOver);
+	$('#code').on('drop', handleDragOn);
+
+	roomID = matchRoomRequest.exec(document.URL)[1];
+	$('#uploadDummyForm').on('submit', function() {
+		if (username != null && username == driver) {
+			alert(username == driver);
+			$('#uploadModal').modal('show');
+		}
+		return false;
+	});
+	$("#uploadForm").on('submit', function() {
+
+		editor.setValue(uploadClipBoard);
+		$('#uploadModal').modal('hide');
+		return false;
+	});
 
 	$('#nameform').on('submit', function() {
 
 		username = $('#username').val();
 
-		$('#myModal').modal('hide');	
+		$('#myModal').modal('hide');
 
 		comm();
 
@@ -76,46 +94,86 @@ $(document).ready(function() {
 
 	$('#myModal').modal('show');
 
-
-
 });
 
+function handleDragOn(evt) {
+	if (username != null && username != driver)
+		return;
+	evt.stopPropagation();
+	evt.preventDefault();
 
+	var files = evt.dataTransfer.files;
+	var output = [];
+	for (var i = 0, f; f = files[i]; i++) {
+		output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ', f.size, ' bytes, last modified: ', f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a', '</li>');
+	}
+	editor.setValue("");
+	editor.setValue('<ul>' + output.join('') + '</ul>');
+}
 
-function setUpEditor(){
+function handleDragOver(evt) {
+	if (username != null && username != driver)
+		return;
+	evt.stopPropagation();
+	evt.preventDefault();
+	evt.dataTransfer.dropEffect = 'copy';
+}
+
+/**
+ * Read a local file from the evt.
+ * @param {Object} evt
+ */
+function handleFileSelect(evt) {
+
+	if (username != null && username != driver)
+		return;
+	var files = evt.target.files;
+	// FileList object
+	for (var i = 0, f; f = files[i]; i++) {
+
+		var reader = new FileReader();
+
+		// Closure to capture the file information.
+		reader.onload = (function(theFile) {
+			return function(e) {
+				uploadClipBoard = e.target.result;
+			};
+		})(f);
+		reader.readAsText(f);
+	}
+}
+
+function setUpEditor() {
 
 	editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-  	mode: {name: language},
-  	lineNumbers: true,
-  	indentUnit: 4,
-  	tabMode: "shift",
-  	theme: "monokai",
-  	matchBrackets: true,
-  	onChange: sendCode
+		mode : {
+			name : language
+		},
+		lineNumbers : true,
+		indentUnit : 4,
+		tabMode : "shift",
+		theme : "monokai",
+		matchBrackets : true,
+		onChange : sendCode
 	});
 
 }
 
+function updateRole(driver) {
 
-function updateRole(driver){
-
-	if(driver == username){
+	if (driver == username) {
 		$('#currentrole').html("<span style='color: #a6e22e'>Driver</span>");
 
-	}else{
+	} else {
 		$('#currentrole').html("<span style='color: #D52664'>Navigator</span>");
 	}
 }
 
-function comm(){
+function comm() {
 
 	// The URL of your web server (the port is set in app.js)
 	//var url = 'http://localhost:9000';
 	var doc = $(document), win = $(window), textbox = $('#text');
-
-	var matchRoomRequest = /.*\/room\/(.{32})/;
-
-	roomID = matchRoomRequest.exec(document.URL)[1];
 
 	var url = 'http://localhost:9000/';
 
@@ -128,11 +186,11 @@ function comm(){
 		'name' : username
 	});
 
-	socket.on('rolesreceive', function (data){
+	socket.on('rolesreceive', function(data) {
 		driver = data.driver;
 		nav = data.nav;
 
-		if(nav && nav == username){
+		if (nav && nav == username) {
 			editor.setOption("readOnly", "nocursor");
 		}
 
@@ -143,7 +201,7 @@ function comm(){
 
 		socket.emit('chatsend', {
 			'name' : username,
-			'msg': $('#msg').val(),
+			'msg' : $('#msg').val(),
 			'roomID' : roomID
 		});
 
@@ -154,34 +212,32 @@ function comm(){
 		return false;
 	});
 
-	socket.on('chatreceive', function(data){
+	socket.on('chatreceive', function(data) {
 		//alert(data.text);
-		if (data.name == nav){
-			$("#chatmsg").html($("#chatmsg").html() + '<span style="color:#D52664;">' +data.name + "</span>: " + data.msg + "<br/>");
-		}
-		else if (data.name == driver){
-			$("#chatmsg").html($("#chatmsg").html() + '<span style="color:#A6E22E;">'+data.name + "</span>: " + data.msg + "<br/>");
+		if (data.name == nav) {
+			$("#chatmsg").html($("#chatmsg").html() + '<span style="color:#D52664;">' + data.name + "</span>: " + data.msg + "<br/>");
+		} else if (data.name == driver) {
+			$("#chatmsg").html($("#chatmsg").html() + '<span style="color:#A6E22E;">' + data.name + "</span>: " + data.msg + "<br/>");
 		}
 		var elem = document.getElementById("chatmsg");
 		elem.scrollTop = elem.scrollHeight;
 
 	});
 
-	socket.on('codereceive', function (data){
+	socket.on('codereceive', function(data) {
 
-		if(username == nav){
+		if (username == nav) {
 			editor.setValue(data.code);
 		}
 	});
 
-	socket.on('sendusers', function (data){
+	socket.on('sendusers', function(data) {
 		var listusers = $('#listusers');
 		listusers.empty();
-		for (i = 0; i< data.users.length; i++){
-			if (data.users[i] == nav){
+		for ( i = 0; i < data.users.length; i++) {
+			if (data.users[i] == nav) {
 				listusers.append('<li style="color:#D52664;">' + data.users[i] + '</li>');
-			}
-			else if (data.users[i] == driver){
+			} else if (data.users[i] == driver) {
 				listusers.append('<li style="color:#A6E22E;">' + data.users[i] + '</li>');
 			}
 		}
@@ -199,5 +255,12 @@ function comm(){
 			editor.setOption("readOnly", "nocursor");
 		}
 	});
+
+	window.setInterval(function() {
+		socket.emit('getusers', {
+			'name' : username,
+			'roomID' : roomID
+		});
+	}, 2000);
 
 }

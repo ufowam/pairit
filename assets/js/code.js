@@ -8,12 +8,14 @@ var socket;
 var driver = null, nav = null;
 
 function sendCode(from, to, text, next){
-		
+	
+	if(username == driver){	
 		socket.emit('codesend', {
 			'name' : username,
 			'code': editor.getValue(),
 			'roomID' : roomID
 		});
+	}
 
 		return false;
 }
@@ -135,10 +137,9 @@ function comm(){
 
 	socket.on('codereceive', function (data){
 
-		//Don't update for the user who made the emit.
-		//if(data.name != username){
-		//	editor.setValue(data.code);
-		//}
+		if(username == nav){
+			editor.setValue(data.code);
+		}
 	});
 
 	socket.on('sendusers', function (data){

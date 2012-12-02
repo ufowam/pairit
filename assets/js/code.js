@@ -32,7 +32,6 @@ $(document).ready(function() {
 	roomID = matchRoomRequest.exec(document.URL)[1];
 	$('#uploadDummyForm').on('submit', function() {
 		if (username != null && username == driver) {
-			alert(username == driver);
 			$('#uploadModal').modal('show');
 		}
 		return false;

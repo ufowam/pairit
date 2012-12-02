@@ -67,7 +67,7 @@ body {
         
       }
 
-      #userlist h5{
+      #userlist h5, #chatTxt{
         font-variant: small-caps;
       }
 

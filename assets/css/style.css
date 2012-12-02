@@ -57,9 +57,14 @@ body {
       }
       
       #chatmsg{
-        width: 190px;
+        width: 80%;
         height: 300px;
         overflow: auto;
+      }
+
+      #msg{
+        width: 80%;
+        
       }
 
       #userlist h5{

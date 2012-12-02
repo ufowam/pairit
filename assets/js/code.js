@@ -7,6 +7,7 @@ var socket;
 var driver = null, nav = null;
 var matchRoomRequest = /.*\/room\/(.{32})/;
 var uploadClipBoard = "";
+var errorLines = new Array();
 function sendCode(from, to, text, next) {
 
 	if (username == driver) {
@@ -41,6 +42,30 @@ $(document).ready(function() {
 		editor.setValue(uploadClipBoard);
 		$('#uploadModal').modal('hide');
 		return false;
+	});
+
+	$('#runlint').on('click', function(){
+
+		
+		if(username == driver){
+
+
+			if(language == "python"){
+
+				socket.emit('runlint', {
+					'code': editor.getValue(),
+					'roomID': roomID
+				});
+
+			}else{
+				$('#alertMsg').html('<div class="alert"><button type="button" class="close" data-dismiss="alert">×</button><strong>Error!</strong> Checker currently only supports Python.</div>');
+			}
+
+		}else{
+			$('#alertMsg').html('<div class="alert"><button type="button" class="close" data-dismiss="alert">×</button><strong>Error!</strong> Only the driver can run the lint.</div>');
+
+		}
+
 	});
 
 	$('#nameform').on('submit', function() {
@@ -254,6 +279,38 @@ function comm() {
 		}else{
 			editor.setOption("readOnly", "nocursor");
 		}
+	});
+
+
+	socket.on('lintresult', function (data){
+		var p = JSON.parse(data.result);
+
+		//alert(errorLines.length);
+
+		for(var i=0; i<errorLines.length; i++){
+			//alert(editor.getLineHandle(errorLines[i]-1));
+			editor.clearMarker(editor.getLineHandle(errorLines[i]-1));
+		}
+
+		//alert("ere")
+
+		errorLines = new Array();
+
+		//alert(p);
+
+		for (var key in p) {
+ 			if (p.hasOwnProperty(key)) {
+
+
+ 				errorLines.push(key);
+ 				editor.setMarker(editor.getLineHandle(key-1), '<a href="#" rel="tooltip" data-placement="right" class="errorLine" title="' + p[key] +'">●</a>'); 
+
+    		//	alert(key + " -> " + p[key]);
+  			}
+		}
+
+	$("[rel=tooltip]").tooltip();
+
 	});
 
 	window.setInterval(function() {

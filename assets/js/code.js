@@ -122,7 +122,12 @@ function comm(){
 
 	socket.on('chatreceive', function(data){
 		//alert(data.text);
-		$("#chatmsg").html($("#chatmsg").html() + data.name + ": " + data.msg + "<br/>");
+		if (data.name == nav){
+			$("#chatmsg").html($("#chatmsg").html() + '<span style="color:#D52664;">' +data.name + "</span>: " + data.msg + "<br/>");
+		}
+		else if (data.name == driver){
+			$("#chatmsg").html($("#chatmsg").html() + '<span style="color:#A6E22E;">'+data.name + "</span>: " + data.msg + "<br/>");
+		}
 		var elem = document.getElementById("chatmsg");
 		elem.scrollTop = elem.scrollHeight;
 
@@ -140,7 +145,12 @@ function comm(){
 		var listusers = $('#listusers');
 		listusers.empty();
 		for (i = 0; i< data.users.length; i++){
-			listusers.append('<li>' + data.users[i] + '</li>');
+			if (data.users[i] == nav){
+				listusers.append('<li style="color:#D52664;">' + data.users[i] + '</li>');
+			}
+			else if (data.users[i] == driver){
+				listusers.append('<li style="color:#A6E22E;">' + data.users[i] + '</li>');
+			}
 		}
 	});
 

@@ -74,4 +74,10 @@ io.sockets.on('connection', function (socket) {
         console.log("Chat rx: " + data.msg);
         io.sockets.in(data.roomID).emit('chatreceive', data);
     });
+
+
+    socket.on('codesend', function (data){
+        console.log(data);
+    });
+
 });

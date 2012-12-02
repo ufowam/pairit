@@ -4,12 +4,24 @@ var editor;
 var username;
 var elem;
 var roomID;
+var socket;
+
+
+function sendCode(from, to, text, next){
+		
+		socket.emit('codesend', {
+			'name' : username,
+			'code': editor.getValue(),
+			'roomID' : roomID
+		});
+
+		return false;
+}
+
 
 $(document).ready(function() {
 
 	elem = $('#chatmsg');
-
-	$('#username').val("John Smith");
 
 	$('#nameform').on('submit', function() {
 
@@ -44,7 +56,8 @@ function setUpEditor(){
   	indentUnit: 4,
   	tabMode: "shift",
   	theme: "monokai",
-  	matchBrackets: true
+  	matchBrackets: true,
+  	onChange: sendCode
 	});
 }
 
@@ -62,7 +75,7 @@ function comm(){
 
 	var url = 'http://localhost:9000/';
 
-	var socket = io.connect(url);
+	socket = io.connect(url);
 
 	//alert(matchRoomRequest.exec(document.URL)[1]);
 

@@ -77,7 +77,8 @@ io.sockets.on('connection', function (socket) {
 
 
     socket.on('codesend', function (data){
-        console.log(data);
+        
+        io.sockets.in(data.roomID).emit('codereceive', data);
     });
 
     socket.on('getusers', function(data){

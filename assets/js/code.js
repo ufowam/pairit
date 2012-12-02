@@ -106,4 +106,12 @@ function comm(){
 		elem.scrollTop = elem.scrollHeight;
 
 	});
+
+	socket.on('codereceive', function (data){
+
+		//Don't update for the user who made the emit.
+		//if(data.name != username){
+		//	editor.setValue(data.code);
+		//}
+	});
 }

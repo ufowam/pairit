@@ -94,29 +94,7 @@
 			<div class="modal-body">
 				<p id="gist_url" class="well"></p>
 			</div>
-
-			<div class="modal-footer">
-
-    <div id="mailto" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-          ×
-        </button>
-        <h4 id="myModalLabel">GIST</h4>
-      </div>
-
-      <div class="modal-body">
-        <form id="mailer" action="name_send" method="POST">
-          <input name="userName" class="well" id="mail" placeholder="Your name goes here"/>
-          &nbsp;&nbsp;&nbsp;&nbsp;
-          <input type="submit" class="btn btn-large btn-primary" value="Start"/>
-        </form>
-      </div>
-
-      <div class="modal-footer">
-
-			</div>
-		</div>
+    </div>
 
 		<div class="container">
 
@@ -246,10 +224,11 @@
 						</div>
 
 						<div class="modal-body">
-							<form action="/emailer" id="inviteForm" enctype="multipart/form-data" method="post">
+							<form target="_blank" action="/emailer" id="inviteForm" method="post">
 								<div class="control-group">
 									<div class="controls">
-										<input type="text" id="input01" class="input-xlarge">
+										<input id="link" type="hidden" name="Language" value="">
+                    <input name="email" type="text" id="input01" class="input-xlarge">
 										<input type="submit"  class="btn btn-medium btn-primary" value="Send " />
 										<p class="help-block">
 											Enter emails seperated by comma's

@@ -8,6 +8,7 @@ var driver = null, nav = null;
 var matchRoomRequest = /.*\/room\/(.{32})/;
 var uploadClipBoard = "";
 var errorLines = new Array();
+
 function sendCode(from, to, text, next) {
 
 	if (username == driver) {
@@ -29,6 +30,7 @@ $(document).ready(function() {
 	$('#code').on('drop', handleDragOn);
 
 	roomID = matchRoomRequest.exec(document.URL)[1];
+
 	$('#uploadDummyForm').on('submit', function() {
 		if (username != null && username == driver) {
 			$('#uploadModal').modal('show');
@@ -200,6 +202,8 @@ function comm() {
 	var doc = $(document), win = $(window), textbox = $('#text');
 
 	var url = 'http://localhost:9000/';
+	$('#link').attr('value', url+'room/'+roomID);
+	//alert($('#link').attr('value'));
 
 	socket = io.connect(url);
 

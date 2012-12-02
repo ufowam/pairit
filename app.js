@@ -8,7 +8,17 @@ var app = require('http').createServer(handler),
     drivers = {},
     navigators = {},
     lastCode = "";
+var nodemailer = require("nodemailer");
+var qs = require('querystring');
 
+// create reusable transport method (opens pool of SMTP connections)
+var smtpTransport = nodemailer.createTransport("SMTP",{
+    service: "Gmail",
+    auth: {
+        user: "ufowam@gmail.com",
+        pass: "m9nt4gn3"
+    }
+});
 
 var fileServer = new static.Server('./');
     
@@ -65,6 +75,39 @@ var matchRoomRequest = /\/room\/(.{32})/;;
                 response.end(unescape(filedata));
             });
 
+
+            break;
+        case request.url == '/emailer':
+            var filedata;
+            request.addListener('data', function(data){
+                var json = qs.parse(data);
+                var email = data.toString().split('=')[2];
+                var link = data.toString().split('=')[0];
+                console.log("link: " + json.link);
+                console.log("data: " + data.toString());
+                console.log("split: " + data.toString().split());
+                // setup e-mail data with unicode symbols
+                var mailOptions = {
+                    from: "Fred Foo ✔ <ufowam@gmail.com>", // sender address
+                    to: email, // list of receivers
+                    subject: "Invitation to join a pair programming session", // Subject line
+                    text: link, // plaintext body
+                    html: "<b>"+ link+"</b>" // html body
+                };
+
+                // send mail with defined transport object
+                smtpTransport.sendMail(mailOptions, function(error, response){
+                if(error){
+                     console.log(error);
+                     console.log("to: " + email);
+                }else{
+                    console.log("Message sent: " + response.message);
+                };
+
+                // if you don't want to use this transport object anymore, uncomment following line
+                 //smtpTransport.close(); // shut down the connection pool, no more messages
+                });                
+            });
 
             break;
 

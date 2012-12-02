@@ -80,7 +80,7 @@ io.sockets.on('connection', function (socket) {
         console.log(data);
     });
 
-    socket.on('get_users', function(data){
+    socket.on('getusers', function(data){
 
         socket_ids = io.sockets.in(data.roomID);
         console.log("requesting users: " + data.roomID);

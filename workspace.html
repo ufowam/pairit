@@ -1,185 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>PairIT</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<head>
+		<meta charset="utf-8">
+		<title>PairIT</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Le styles -->
-    <link href="../assets/css/bootstrap.css" rel="stylesheet">
-    <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="../assets/css/darkstrap.css" rel="stylesheet">
-    <link href="../assets/css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/lib/codemirror.css">
-    <link href="../assets/css/monokai.css" rel="stylesheet">
+		<!-- Le styles -->
+		<link href="../assets/css/bootstrap.css" rel="stylesheet">
+		<link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
+		<link href="../assets/css/darkstrap.css" rel="stylesheet">
+		<link href="../assets/css/style.css" rel="stylesheet">
+		<link rel="stylesheet" href="../assets/lib/codemirror.css">
+		<link href="../assets/css/monokai.css" rel="stylesheet">
 
-<!--[if lt IE 9]>
-          <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+		<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
 
-    <script src="../assets/js/jquery.js"></script>
-    <script src="../assets/js/bootstrap-dropdown.js"></script>
-    <script src="../assets/js/bootstrap-modal.js"></script>
-     <script src="../assets/js/bootstrap-alert.js"></script>
-      <script src="../assets/js/bootstrap-tooltip.js"></script>
-    <script src="../assets/lib/codemirror.js"></script>
-    <script src="../assets/mode/python/python.js"></script>
-    <script src="../assets/mode/javascript/javascript.js"></script>
-    <script src="../assets/js/code.js"></script>
-    <script src="../assets/js/switch_language.js"></script>
-    <script src="../assets/js/download_file.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
+		<script src="../assets/js/jquery.js"></script>
+		<script src="../assets/js/bootstrap-dropdown.js"></script>
+		<script src="../assets/js/bootstrap-modal.js"></script>
+		<script src="../assets/js/bootstrap-alert.js"></script>
+		<script src="../assets/js/bootstrap-tooltip.js"></script>
+		<script src="../assets/lib/codemirror.js"></script>
+		<script src="../assets/mode/python/python.js"></script>
+		<script src="../assets/mode/javascript/javascript.js"></script>
+		<script src="../assets/mode/go/go.js"></script>
+		<script src="../assets/mode/mysql/mysql.js"></script>
+		<script src="../assets/mode/ruby/ruby.js"></script>
+		<script src="../assets/js/code.js"></script>
+		<script src="../assets/js/switch_language.js"></script>
+		<script src="../assets/js/download_file.js"></script>
+		<script src="/socket.io/socket.io.js"></script>
 
-  </head>
+	</head>
 
-  <body>
-    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 id="myModalLabel">Please enter your name</h4>
-      </div>
+	<body>
+		<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					×
+				</button>
+				<h4 id="myModalLabel">Please enter your name</h4>
+			</div>
 
-      <div class="modal-body">
-        <script type="text/javascript">
-    $("[rel=tooltip]").tooltip();
-</script>
-        <form id="nameform" action="name_send" method="POST">
-          <input name="userName" class="well" id="username" placeholder="Your name goes here"/>&nbsp;&nbsp;&nbsp;&nbsp;
-          <input type="submit" class="btn btn-large btn-primary" value="Start"/>
-        </form>
-      </div>
-  
-      <div class="modal-footer">
-        
-      </div>
-    </div>
+			<div class="modal-body">
+				<script type="text/javascript">
+					$("[rel=tooltip]").tooltip();
+				</script>
+				<form id="nameform" action="name_send" method="POST">
+					<input name="userName" class="well" id="username" placeholder="Your name goes here"/>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="submit" class="btn btn-large btn-primary" value="Start"/>
+				</form>
+			</div>
 
+			<div class="modal-footer">
 
-    <div id="upload_gist" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 id="myModalLabel">GIST</h4>
-      </div>
+			</div>
+		</div>
 
-      <div class="modal-body">
-        <form id="download_gist" action="#" method="POST">
-          <input name="filename" class="well" id="filename" placeholder="Your filename goes here"/></br>
-          <input name="description" class="well" id="description" placeholder="Your description goes here"/>&nbsp;&nbsp;&nbsp;&nbsp;
-          <input type="submit" class="btn btn-large btn-primary" value="Get gist Link"/>
-        </form>
-      </div>
-  
-      <div class="modal-footer">
-        
-      </div>
-    </div>
+		<div id="upload_gist" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					×
+				</button>
+				<h4 id="myModalLabel">GIST</h4>
+			</div>
 
-    <div id="gist_url_div" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 id="myModalLabel">GIST</h4>
-      </div>
+			<div class="modal-body">
+				<form id="download_gist" action="#" method="POST">
+					<input name="filename" class="well" id="filename" placeholder="Your filename goes here"/>
+					</br>
+					<input name="description" class="well" id="description" placeholder="Your description goes here"/>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="submit" class="btn btn-large btn-primary" value="Get gist Link"/>
+				</form>
+			</div>
 
-      <div class="modal-body">
-        <p id="gist_url" class="well"></p>
-      </div>
-  
-      <div class="modal-footer">
-        
-      </div>
-    </div>
+			<div class="modal-footer">
 
-    <div class="container">
+			</div>
+		</div>
 
-      <div class="masthead">
-        <ul class="nav nav-pills pull-right">
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="../about.html">About</a></li>
-        </ul>
-        <h3 class="muted">Pair<span style="color: #f92672;">IT</span></h3>
-      </div>
+		<div id="gist_url_div" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					×
+				</button>
+				<h4 id="myModalLabel">GIST</h4>
+			</div>
 
-      <hr>
+			<div class="modal-body">
+				<p id="gist_url" class="well"></p>
+			</div>
 
-      <div class="row-fluid">
+			<div class="modal-footer">
 
+			</div>
+		</div>
 
-        <!-- jumbotron well editorspace -->
+		<div class="container">
 
-        <div class="span8 well" id="editorspace">
+			<div class="masthead">
+				<ul class="nav nav-pills pull-right">
+					<li>
+						<a href="../index.html">Home</a>
+					</li>
+					<li>
+						<a href="../about.html">About</a>
+					</li>
+				</ul>
+				<h3 class="muted">Pair<span style="color: #f92672;">IT</span></h3>
+			</div>
 
+			<hr>
 
+			<div class="row-fluid">
 
-          <div id="nav">
+				<!-- jumbotron well editorspace -->
 
+				<div class="span8 well" id="editorspace">
 
+					<div id="nav">
 
+						<ul class="nav nav-pills" style="float: left;">
+							<li class="dropdown active">
+								<a class='dropdown-toggle' data-toggle="dropdown" id="current_language"> Language <b class="caret"></b> </a>
+								<ul class="dropdown-menu" id="language_list">
 
-            <ul class="nav nav-pills" style="float: left;">
-              <li class="dropdown active">
-                  <a class='dropdown-toggle' data-toggle="dropdown" id="current_language">
-                    Language
-                    <b class="caret"></b>
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a id="python" href="#">Python</a></li>
-                    <li><a id="javascript" href="#">Javascript</a></li>
-                  </ul>
-              </li>
+								</ul>
+							</li>
 
-              <li class="active"><a href="#" id="runlint">Check Syntax</a></li>
-            </ul>
+							<li class="active">
+								<a href="#" id="runlint">Check Syntax</a>
+							</li>
+						</ul>
 
-            <div id="role" style="float: right;">
-              <span style="font-variant: small-caps;">Mode</span>: <span id="currentrole">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 
-          </div>
+						<div id="role" style="float: right;">
+							<span style="font-variant: small-caps;">Mode</span>: <span id="currentrole">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+						</div>
 
-          <div class="clear"></div>
+						<div class="clear"></div>
 
-          </div>
+					</div>
+					<textarea id="code"></textarea>
 
-          <textarea id="code"></textarea>
-        </div>
+				</div>
 
-        <div class="span4 well" id="chatspace">
-          <div id="chatarea">
+				<div class="span4 well" id="chatspace">
+					<div id="chatarea">
 
-            <div id="chatmsg" class="breadcrumb"></div>
-      
-            <br/>
+						<div id="chatmsg" class="breadcrumb"></div>
 
-            <form id="chatsend" action="chat_send" method="POST">
-                <input type="text" class="" name="msg" id="msg" placeholder="Enter your message" autocomplete="off"/>
-                <div style="text-align: right; margin-right: 10px;">
-                  <input type="submit" class="btn btn-medium btn-success" value="Send"/>
-                </div>
-            </form>
-          </div>
+						<br/>
 
-          <div id="userlist">
-            <center>
-              <h5>Users</h5>
-            </center>
-            <ul style="text-align:center;" class="unstyled" id="listusers"></ul>
-          </div>
-        </div>
+						<form id="chatsend" action="chat_send" method="POST">
+							<input type="text" class="" name="msg" id="msg" placeholder="Enter your message" autocomplete="off"/>
+							<div style="text-align: right; margin-right: 10px;">
+								<input type="submit" class="btn btn-medium btn-success" value="Send"/>
+							</div>
+						</form>
+					</div>
 
-      </div>
+					<div id="userlist">
+						<center>
+							<h5>Users</h5>
+						</center>
+						<ul style="text-align:center;" class="unstyled" id="listusers"></ul>
+					</div>
+				</div>
 
-    <div id="alertMsg">  
-    </div>
+			</div>
 
+			<div id="alertMsg"></div>
 
+			<form id="switchpartner" class="pagination-centered" action="switch_partner" method="POST">
+				<!--<input class="input-xlarge" id="name_input" name="username" type="text" placeholder="Enter your name"/>-->
+				<br/>
+				<br/>
+				<input type="submit" class="btn btn-medium btn-success" value="Switch"/>
+			</form>
 
-      <form id="switchpartner" class="pagination-centered" action="switch_partner" method="POST">
-            <!--<input class="input-xlarge" id="name_input" name="username" type="text" placeholder="Enter your name"/>-->
-            <br/><br/>
-            <input type="submit" class="btn btn-medium btn-success" value="Switch"/>
-      </form>
+			<hr>
 
-      <hr>
-
-      <div class="row-fluid">
+			<div class="row-fluid">
 
 				<div class="span4" style="text-align: center;">
 					<h4>Import an existing file</h4>
@@ -207,70 +212,98 @@
 					</div>
 				</div>
 
+				<div class="span4" style="text-align: center;">
+					<h4>Invite someone</h4>
+					<br/>
 
-        <div class="span4" style="text-align: center;">
-          <h4>Invite someone</h4>
-          <br/>
-          <button class="btn btn-medium btn-primary">Email invite link</button>
-        </div>
+					<form id="inviteDummyForm" action="invite dummy" method="post">
+						<input type="submit" id="inviteModalButton" class="btn btn-medium btn-primary" value="Email session link"/>
+					</form>
+					<div id="inviteModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="inviteModalLabel" aria-hidden="true">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+								×
+							</button>
+							<h4 id="inviteModalLabel">Invite a friend</h4>
+						</div>
 
+						<div class="modal-body">
+							<form action="/emailer" id="inviteForm" enctype="multipart/form-data" method="post">
+								<div class="control-group">
+									<div class="controls">
+										<input type="text" id="input01" class="input-xlarge">
+										<input type="submit"  class="btn btn-medium btn-primary" value="Send " />
+										<p class="help-block">
+											Enter emails seperated by comma's
+										</p>
+									</div>
+								</div>
+							</form>
+						</div>
 
+						<div class="modal-footer"></div>
+					</div>
+				</div>
 
-      <div class="span4" style="text-align: center;">
-          <h4>Share/Export your code</h4>
-          <br/>
+				<div class="span4" style="text-align: center;">
+					<h4>Share/Export your code</h4>
+					<br/>
 
-          <div class="btn-group">
-            <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-              Export to
-              <span class="caret"></span>
-            </button>
+					<div class="btn-group">
+						<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+							Export to
+							<span class="caret"></span>
+						</button>
 
-            <ul class="dropdown-menu">
-              <li> <a id="download_raw" href="#">Raw</a> </li>
-              <li> <a href="#upload_gist" role="button" class="btn" data-toggle="modal">Gist</a> </li>
-            </ul>
+						<ul class="dropdown-menu">
+							<li>
+								<a id="download_raw" href="#">Raw</a>
+							</li>
+							<li>
+								<a href="#upload_gist" role="button" class="btn" data-toggle="modal">Gist</a>
+							</li>
+						</ul>
 
-          </div>
-    
-      </div>
+					</div>
 
+				</div>
 
-      </div>
+			</div>
 
-      <!--<div class="row-fluid marketing">
-        <div class="span6">
-          <h4>Fast.</h4>
-          <p>No registration. Create a new session and share the link, we'll bring it live.</p>
+			<!--<div class="row-fluid marketing">
+			<div class="span6">
+			<h4>Fast.</h4>
+			<p>No registration. Create a new session and share the link, we'll bring it live.</p>
 
-          <h4>Communicate.</h4>
-          <p>Live video chat to communicate with your partner.</p>
+			<h4>Communicate.</h4>
+			<p>Live video chat to communicate with your partner.</p>
 
-          <h4>Just like an IDE.</h4>
-          <p>On the fly syntax highlighting; code checker that notifies you of glitches.</p>
-        </div>
+			<h4>Just like an IDE.</h4>
+			<p>On the fly syntax highlighting; code checker that notifies you of glitches.</p>
+			</div>
 
-        <div class="span6">
-          <h4>Pair programming</h4>
-          <p>Switch between the driver and navigator modes anytime.</p>
+			<div class="span6">
+			<h4>Pair programming</h4>
+			<p>Switch between the driver and navigator modes anytime.</p>
 
-          <h4>Show it.</h4>
-          <p>Add spectators to the pair session.</p>
+			<h4>Show it.</h4>
+			<p>Add spectators to the pair session.</p>
 
-          <h4>Share.</h4>
-          <p>When you're done, share the code on gist/github.</p>
-        </div>
-      </div>-->
+			<h4>Share.</h4>
+			<p>When you're done, share the code on gist/github.</p>
+			</div>
+			</div>-->
 
-      <hr>
+			<hr>
 
-        
-      <div id="footer">
-        <div class="container">
-          <p class="muted credit">Powered by: <a href="#">ufowam</a>; <a href="#">ayrus</a> and <a href="#">arods</a>.</p>
-        </div>
-      </div>
+			<div id="footer">
+				<div class="container">
+					<p class="muted credit">
+						Powered by: <a href="#">ufowam</a>; <a href="#">ayrus</a> and <a href="#">arods</a>.
+					</p>
+				</div>
+			</div>
 
-    </div>
-  </body>
+		</div>
+	</body>
 </html>

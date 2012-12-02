@@ -7,7 +7,6 @@ $(document).ready(function() {
 	for (var i = 0; i < languages.length; i++) {
 		htmlElements += '<li><a id="' + languages[i] + '" href="#">' + languages[i] + '</a></li>\n';
 	}
-	alert(htmlElements);
 	document.getElementById("language_list").innerHTML = htmlElements;
 	$('#Python').click(function() {
 		editor.setOption('mode', 'python');

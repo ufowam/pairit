@@ -4,7 +4,10 @@ var app = require('http').createServer(handler),
     io = require('socket.io').listen(app),
     static = require('node-static'),
     md5h = require('MD5'),
-    allclients = {};
+    allclients = {},
+    drivers = {},
+    navigators = {};
+
 
 var fileServer = new static.Server('./');
     
@@ -68,8 +71,30 @@ io.sockets.on('connection', function (socket) {
         socket.join(data.roomID);
         allclients[socket.id.toString()] = data.name;
 
+        if(!(data.roomID in drivers)){
+            drivers[data.roomID] = data.name;
+        }else if(!(data.roomID in navigators)){
+            navigators[data.roomID] = data.name;      
+        }else{
+            //add guests here.
+        }
 
-        console.log(allclients[socket.id.toString()]);
+        console.log(drivers[data.roomID]);
+
+        console.log(navigators[data.roomID]);
+
+        //if()
+
+
+        //console.log(allclients[socket.id.toString()]);
+
+
+        io.sockets.in(data.roomID).emit('rolesreceive', {
+            'nav' : navigators[data.roomID],
+            'driver': drivers[data.roomID]
+        });
+
+
     });
 
     socket.on('chatsend', function (data) {
@@ -81,15 +106,18 @@ io.sockets.on('connection', function (socket) {
 
     socket.on('codesend', function (data){
         
+        data['navigator'] = navigators[data.roomID];
+        data['driver'] = drivers[data.roomID];
+
         io.sockets.in(data.roomID).emit('codereceive', data);
+
+        console.log(data);
     });
 
     socket.on('getusers', function(data){
 
         socket_ids = io.sockets.clients(data.roomID);
         var response = new Array();
-        //console.log("requesting users: " + data.roomID);
-        //console.log("socket_ids:   " + socket_ids);
 
         for(var i=0; i<socket_ids.length; i++){
             response.push(allclients[socket_ids[i].id]);

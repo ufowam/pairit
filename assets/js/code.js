@@ -5,7 +5,7 @@ var username;
 var elem;
 var roomID;
 var socket;
-
+var driver = null, nav = null;
 
 function sendCode(from, to, text, next){
 		
@@ -29,9 +29,9 @@ $(document).ready(function() {
 
 		$('#myModal').modal('hide');	
 
-		setUpEditor();
-
 		comm();
+
+		setUpEditor();
 
 		return false;
 	});
@@ -59,6 +59,7 @@ function setUpEditor(){
   	matchBrackets: true,
   	onChange: sendCode
 	});
+
 }
 
 function comm(){
@@ -80,6 +81,15 @@ function comm(){
 	socket.emit('joinroom', {
 		'roomID' : roomID,
 		'name' : username
+	});
+
+	socket.on('rolesreceive', function (data){
+		driver = data.driver;
+		nav = data.nav;
+
+		if(nav && nav == username){
+			editor.setOption("readOnly", "nocursor");
+		}
 	});
 
 	$('#chatsend').on('submit', function() {

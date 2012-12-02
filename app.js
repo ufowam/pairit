@@ -15,8 +15,8 @@ var qs = require('querystring');
 var smtpTransport = nodemailer.createTransport("SMTP",{
     service: "Gmail",
     auth: {
-        user: "ufowam@gmail.com",
-        pass: "m9nt4gn3"
+        user: "pairit3@gmail.com",
+        pass: ""
     }
 });
 
@@ -80,12 +80,12 @@ var matchRoomRequest = /\/room\/(.{32})/;;
         case request.url == '/emailer':
             var filedata;
             request.addListener('data', function(data){
-                var json = qs.parse(data);
-                var email = data.toString().split('=')[2];
-                var link = data.toString().split('=')[0];
-                console.log("link: " + json.link);
-                console.log("data: " + data.toString());
-                console.log("split: " + data.toString().split());
+                //var json = qs.parse(data);
+                var email = unescape(data.toString().split('=')[2]);
+                var link = unescape(data.toString().split('=')[1]);
+                //console.log("link: " + json.link);
+                console.log("email: " + email);
+                console.log("link: " + link);
                 // setup e-mail data with unicode symbols
                 var mailOptions = {
                     from: "Fred Foo ✔ <ufowam@gmail.com>", // sender address

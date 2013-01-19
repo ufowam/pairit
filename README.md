@@ -1,7 +1,7 @@
 pairit
 ======
 
-Angel Hack project - This is a hackathon project myself, Warren Marival and Suryva Nallu participated in; three
+Angel Hack project - This is a hackathon project myself, Warren Marivel and Suryva Nallu participated in; three
 University of Toronto Undergraduates.
 
 The theme of the hackathon was to solve any problem in about 24 hours. We chose to create a Pair Programming app,
@@ -13,6 +13,8 @@ these changes in real time. We made it so that there could only be one person ed
 and one or more navigators. The driver and navigator could easily switch at any time.
 
 To make collaboration efficent we added syntax highlighting for several languages (such as Python), 
-syntax checking, you could drag and drop new files into the editor. 
+syntax checking, a chat window you could drag and drop new files into the editor. 
 Finally, Once your done editing the file export the file, to a gist or download it.
+
+
 

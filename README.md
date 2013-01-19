@@ -1,6 +1,6 @@
 pairit
 ======
-
+(rough draft readme)
 Angel Hack project - This is a hackathon project myself, Warren Marivel and Suryva Nallu participated in; three
 University of Toronto Undergraduates.
 

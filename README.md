@@ -30,9 +30,9 @@ from not sleeping in over 36 hours. After a couple Red Bulls and an adrenaline r
 to cover all that we wanted. The pitch went smoothly and we finished exactly at the 2 minute mark.
 
 After the pitch, one of the Microsoft judges asked us why not just use RDP? It took us a moment to realize
-what he was suggesting was windows Remote Desktop Protocol as a viable solution to our problem instead.
+what he was suggesting was windows Remote Desktop Protocol as a viable solution instead.
 Our problems with RDP is of course you have to have a windows OS 
-(or be willing to install additional software on other OS's like linux), configure your firewalls, 
+(or be willing to install additional software on other OS's), configure your firewalls, 
 install additional software for an IDE, and then give some remote user full access to your computer (no thanks). 
 Instead PairIT seeks to be a light weight solution with no strings attached, you simply need a web browser.
 
@@ -50,7 +50,9 @@ We recieved feedback from the judges almost immediately and we were happy to fin
 We would have to wait about 5 more hours to get the results of the hackathon, because there were so many other
 teams to pitch still. The announcement came late in the evening of the second day of the hackathon. 
 
-We had exceeded our expections and were one of the teams to... (to be continued)
+We ended up coming in the top 5 which exceeded our expectations! Had we known that we had a chance we may have
+prepared more and had a larger team since the top 2 teams got to go to Silicon Valley and are incubated 
+with lots investments. :)
 
 
 Warning

@@ -1,8 +1,8 @@
 pairit
 ======
-(rough draft readme)
 Angel Hack project - This is a hackathon project myself, Warren Marivel and Suryva Nallu participated in; three
-University of Toronto Undergraduates.
+University of Toronto Undergraduates. This Toronto hackathon is one of the largest in the World with 100s of teams 
+this year. You can find more information about angel hack here at their [website](http://angelhack.ca).
 
 The theme of the hackathon was to solve any problem in about 24 hours. We chose to create a Pair Programming app,
 to allow remote users to easily collaborate with no downloads or any plugins. We called this prototype PairIT.
@@ -13,8 +13,8 @@ these changes in real time. We made it so that there could only be one person ed
 and one or more navigators. The driver and navigator could easily switch at any time.
 
 To make collaboration efficent we added syntax highlighting for several languages (such as Python), 
-syntax checking, a chat window you could drag and drop new files into the editor. 
-Finally, Once your done editing the file export the file, to a gist or download it.
+syntax checking, a chat window you, and you could upload a file by dragging and droping new files into the editor. 
+Finally, once your done editing the file you could export the file, to a gist or download it.
 
 
 

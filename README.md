@@ -1,7 +1,7 @@
 #PairIT
 -----
 ##About
-Angel Hack project - This is a hackathon project myself, Warren Marivel and Suryva Nallu participated in; three
+Angel Hack project - This is a [hackathon project](http://www.hackathon.io/741) myself, Warren Marivel and Suryva Nallu participated in; three
 University of Toronto Undergraduates. This Toronto hackathon is one of the largest in the world with 100s of 
 participants this year. You can find more information about angel hack here at their [website](http://angelhack.ca).
 
@@ -31,15 +31,21 @@ to cover all that we wanted. The pitch went smoothly and we finished exactly at 
 
 After the pitch, one of the Microsoft judges asked us why not just use RDP? It took us a moment to realize
 what he was suggesting was windows Remote Desktop Protocol as a viable solution to our problem instead.
-The problem with RDP is of course you have to have a windows OS 
+Our problems with RDP is of course you have to have a windows OS 
 (or be willing to install additional software on other OS's like linux), configure your firewalls, 
 install additional software for an IDE, and then give some remote user full access to your computer (no thanks). 
-Instead PairIT seeks to be a light weight solution with no strings attached, you simply need a web browser!
+Instead PairIT seeks to be a light weight solution with no strings attached, you simply need a web browser.
 
 
 ##Hackathon Results
 
-The feedback from the judges was mostly positive.
+We recieved feedback from the judges almost immediately and we were happy to find that it was mostly positive.
+* "Liked the presentation with story off the top.  Most importantly,
+  there is a real need for this.  As for name, needs some work!"
+* "Cool."
+* "Great idea.. I'm old I think it'll be hard to get people to change off rdp initially"
+* "Awesome live demo; Good to play on strengths of what you would use; Showed full use case and workflow for programmers."
+* "Cool tech but can you use it on projects? Nice work for a weekend."
 
 
 Warning

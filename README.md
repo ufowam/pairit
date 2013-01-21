@@ -1,9 +1,9 @@
-#pairit
+#PairIT
 -----
 ##About
 Angel Hack project - This is a hackathon project myself, Warren Marivel and Suryva Nallu participated in; three
-University of Toronto Undergraduates. This Toronto hackathon is one of the largest in the World with 100s of participants 
-this year. You can find more information about angel hack here at their [website](http://angelhack.ca).
+University of Toronto Undergraduates. This Toronto hackathon is one of the largest in the world with 100s of 
+participants this year. You can find more information about angel hack here at their [website](http://angelhack.ca).
 
 The theme of the hackathon was to solve any problem in about 24 hours. We chose to create a Pair Programming app,
 to allow remote users to easily collaborate with no downloads or any plugins. We called this prototype PairIT.
@@ -17,20 +17,37 @@ To make collaboration efficent we added syntax highlighting for several language
 syntax checking, a chat window you, and you could upload a file by dragging and droping new files into the editor. 
 Finally, once your done editing the file you could export the file, to a gist or download it.
 
-##The Pitch and Results
+##The Pitch
 
-After the 24 hours had passed each team had to do a 2 minute pitch. To think, we work hard for 24 hours and they only
-give us 2 minutes! The pressure was on to deliver the idea of PairIT and show off full use case for our app in this
-small window of time given to us. I was chosen to be the speaker for our team, and Warren would be 
+After the 24 hour sprint had passed each team had to do a 2 minute pitch to the 12 judges. To think, we worked hard for 
+24 hours and they only gave us 2 minutes! The pressure was on to deliver the idea of PairIT and show off full use case 
+for our app in this small window of time. I was chosen to be the speaker for our team, while Warren would be on the 
+computer demonstrating what I was talking about and Surya would answer any questions from the Judges after the demo.
 
-(to be continued)
+Our team was one of the first teams to pitch (i think we were the 11th) and there was an audience over of 500+. I was 
+quiet nervous as I didn't have much experience in public speaking to a large audience and at this point I was exausted
+from not sleeping in over 36 hours. After a couple Red Bulls and an adrenaline rush, I pitched PairIT and we were able
+to cover all that we wanted. The pitch went smoothly and we finished exactly at the 2 minute mark.
+
+After the pitch, one of the Microsoft judges asked us why not just use RDP? It took us a moment to realize
+what he was suggesting was windows Remote Desktop Protocol as a viable solution to our problem instead.
+The problem with RDP is of course you have to have a windows OS 
+(or be willing to install additional software on other OS's like linux), configure your firewalls, 
+install additional software for an IDE, and then give some remote user full access to your computer (no thanks). 
+Instead PairIT seeks to be a light weight solution with no strings attached, you simply need a web browser!
+
+
+##Hackathon Results
+
+The feedback from the judges was mostly positive.
+
 
 Warning
 -----
 None of us had any experience in Node but we thought it would be exciting to learn something new as we go.
-Combine this with the extreme time constraints and pressure of a hackathon to create your product in 24 hrs and 
+Combine this with the extreme time constraints and the pressure of a hackathon to create your product in 24 hrs and 
 you have a recipe for dirty code! So I warn you, some of the code is inefficient and just plain ugly; 
-many sacrifices needed to be made for immediate gains and anyone who wants to look at the code will probably find it 
+many sacrifices needed to be made for immediate gains and anyone who wants to look at the code will may find it 
 painful to read. 
 
 

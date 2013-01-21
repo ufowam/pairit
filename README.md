@@ -2,12 +2,11 @@
 -----
 ##About
 Angel Hack project - This is a hackathon project myself, Warren Marivel and Suryva Nallu participated in; three
-University of Toronto Undergraduates. This Toronto hackathon is one of the largest in the World with 100s of teams 
+University of Toronto Undergraduates. This Toronto hackathon is one of the largest in the World with 100s of participants 
 this year. You can find more information about angel hack here at their [website](http://angelhack.ca).
 
 The theme of the hackathon was to solve any problem in about 24 hours. We chose to create a Pair Programming app,
 to allow remote users to easily collaborate with no downloads or any plugins. We called this prototype PairIT.
-
 
 At the end of the 24 hour sprint, we had a basic IDE that could be shared with other users in real time.
 Think of it as google docs for programmers; as you edit the file other users in the session see 
@@ -18,7 +17,13 @@ To make collaboration efficent we added syntax highlighting for several language
 syntax checking, a chat window you, and you could upload a file by dragging and droping new files into the editor. 
 Finally, once your done editing the file you could export the file, to a gist or download it.
 
+##The Pitch and Results
 
+After the 24 hours had passed each team had to do a 2 minute pitch. To think, we work hard for 24 hours and they only
+give us 2 minutes! The pressure was on to deliver the idea of PairIT and show off full use case for our app in this
+small window of time given to us. I was chosen to be the speaker for our team, and Warren would be 
+
+(to be continued)
 
 Warning
 -----

@@ -1,8 +1,8 @@
 #PairIT
 -----
 ##About
-Angel Hack project - This is a [hackathon project](http://www.hackathon.io/741) myself, Warren Marivel and Suryva Nallu participated in; three
-University of Toronto Undergraduates. This Toronto hackathon is one of the largest in the world with 100s of 
+Angel Hack project - This is a [hackathon project](http://www.hackathon.io/741) myself, Warren Marivel and Surya Nallu
+participated in; three University of Toronto Undergraduates. This Toronto hackathon is one of the largest in the world with 100s of 
 participants this year. You can find more information about angel hack here at their [website](http://angelhack.ca).
 
 The theme of the hackathon was to solve any problem in about 24 hours. We chose to create a Pair Programming app,

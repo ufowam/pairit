@@ -47,6 +47,11 @@ We recieved feedback from the judges almost immediately and we were happy to fin
 * "Awesome live demo; Good to play on strengths of what you would use; Showed full use case and workflow for programmers."
 * "Cool tech but can you use it on projects? Nice work for a weekend."
 
+We would have to wait about 5 more hours to get the results of the hackathon, because there were so many other
+teams to pitch still. The announcement came late in the evening of the second day of the hackathon. 
+
+We had exceeded our expections and were one of the teams to... (to be continued)
+
 
 Warning
 -----

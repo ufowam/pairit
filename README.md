@@ -19,7 +19,7 @@ Finally, once your done editing the file you could export the file, to a gist or
 
 ##The Pitch
 
-After the 24 hour sprint had passed each team had to do a 2 minute pitch to the 12 judges. To think, we worked hard for 
+After the 24 hour sprint had passed each team had to do a 2 minute pitch to 12 judges. To think, we worked hard for 
 24 hours and they only gave us 2 minutes! The pressure was on to deliver the idea of PairIT and show off full use case 
 for our app in this small window of time. I was chosen to be the speaker for our team, while Warren would be on the 
 computer demonstrating what I was talking about and Surya would answer any questions from the Judges after the demo.
@@ -50,15 +50,17 @@ We recieved feedback from the judges almost immediately and we were happy to fin
 We would have to wait about 5 more hours to get the results of the hackathon, because there were so many other
 teams left to pitch. The announcement came late in the evening of the second day of the hackathon. 
 
-We ended up coming in the top 5 which exceeded our expectations! Had we known that we had a chance we may have
-prepared more and had a larger team since the top 2 teams got to go to Silicon Valley and are incubated 
-with lots investments. :)
+We ended up coming in the top 5 which exceeded our expectations. Had we known that we had a chance we may have
+prepared more and had a larger team since the top 2 teams got to go to Silicon Valley and are then incubated 
+with lots investments. You can see PairIt briefly mentioned in the prize section at http://torontoangelhack.eventbrite.com/.
+
+
 
 
 Warning
 -----
-None of us had any experience in Node but we thought it would be exciting to learn something new as we go.
-Combine this with the extreme time constraints and the pressure of a hackathon to create your product in 24 hrs and 
+None of us had any experience in Node or any of the technologies used but we thought it would be exciting to 
+learn something new as we go. Combine this with the extreme time constraints and the pressure of a hackathon to create your product in 24 hrs and 
 you have a recipe for dirty code! So I warn you, some of the code is inefficient and just plain ugly; 
 many sacrifices needed to be made for immediate gains and anyone who wants to look at the code will may find it 
 painful to read. 

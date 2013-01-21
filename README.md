@@ -1,5 +1,6 @@
-pairit
-======
+#pairit
+-----
+##About
 Angel Hack project - This is a hackathon project myself, Warren Marivel and Suryva Nallu participated in; three
 University of Toronto Undergraduates. This Toronto hackathon is one of the largest in the World with 100s of teams 
 this year. You can find more information about angel hack here at their [website](http://angelhack.ca).
@@ -22,7 +23,7 @@ Finally, once your done editing the file you could export the file, to a gist or
 Warning
 -----
 None of us had any experience in Node but we thought it would be exciting to learn something new as we go.
-Combine this with the extreme time constraints and pressure of a hackathon, to create your product in 24 hrs and 
+Combine this with the extreme time constraints and pressure of a hackathon to create your product in 24 hrs and 
 you have a recipe for dirty code! So I warn you, some of the code is inefficient and just plain ugly; 
 many sacrifices needed to be made for immediate gains and anyone who wants to look at the code will probably find it 
 painful to read. 

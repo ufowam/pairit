@@ -73,7 +73,7 @@ Disclaimer about PairIt's code
 None of us had any experience in Node or any of the technologies used but we thought it would be exciting to 
 learn something new as we go. Combine this with the extreme time constraints and the pressure of a hackathon to create your product in 24 hrs and 
 you have a recipe for dirty code! So I warn you, some of the code is inefficient and just plain ugly; 
-many sacrifices needed to be made for immediate gains and anyone who wants to look at the code will may find it 
+many sacrifices needed to be made for immediate gains and anyone who wants to look at the code may find it 
 painful to read. 
 
 

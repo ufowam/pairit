@@ -1,5 +1,9 @@
 #PairIT
 -----
+
+![sdfdsf](https://raw.github.com/ajrod/pairit/master/sketch.png "sdfdsf")
+
+Sketch made by [Sacha Chua](http://sachachua.com/blog/2012/12/sketchnotes-angel-hack-toronto-pitches/).
 ##About
 Angel Hack project - This is a [hackathon project](http://www.hackathon.io/741) myself, Warren Marivel and Surya Nallu
 participated in; three University of Toronto Undergraduates. This Toronto hackathon is one of the largest in the world with 100s of 

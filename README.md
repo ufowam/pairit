@@ -1,7 +1,7 @@
 #PairIT
 -----
 
-![sdfdsf](https://raw.github.com/ajrod/pairit/master/sketch.png "sdfdsf")
+![PairIt Sketch](https://raw.github.com/ajrod/pairit/master/sketch.png "PairIt Sketch")
 
 Sketch made by [Sacha Chua](http://sachachua.com/blog/2012/12/sketchnotes-angel-hack-toronto-pitches/).
 ##About
@@ -21,6 +21,8 @@ To make collaboration efficent we added syntax highlighting for several language
 syntax checking, a chat window you, and you could upload a file by dragging and droping new files into the editor. 
 Finally, once your done editing the file you could export the file, to a gist or download it.
 
+![PairIt Snapshot 1](https://raw.github.com/ajrod/pairit/master/snapshot1.png "PairIt Snapshot 1")
+![PairIt Snapshot 2](https://raw.github.com/ajrod/pairit/master/snapshot2.png "PairIt Snapshot 2")
 ##The Pitch
 
 After the 24 hour sprint had passed each team had to do a 2 minute pitch to 12 judges. To think, we worked hard for 
@@ -55,13 +57,17 @@ We would have to wait about 5 more hours to get the results of the hackathon, be
 teams left to pitch. The announcement came late in the evening of the second day of the hackathon. 
 
 We ended up coming in the top 5 which exceeded our expectations. Had we known that we had a chance we may have
-prepared more and had a larger team since the top 2 teams got to go to Silicon Valley and are then incubated 
-with lots investments. You can see PairIt briefly mentioned in the prize section at http://torontoangelhack.eventbrite.com/.
+prepared more and had a larger team since the top 2 teams got to go to Silicon Valley and become incubated 
+with lots of investments. You can see PairIt briefly mentioned in the prize section at http://torontoangelhack.eventbrite.com/.
 
 
+##Going Forward
+We were all pleased about our results on team PairIT. We have since renamed it to PairIDE and 
+are now working on PairIDE as a Capstone project at University of Toronto. You can follow updates 
+at our new [github](https://github.com/pairide/pairide) or our website www.PairIDE.com.
 
 
-Warning
+Disclaimer about PairIt's code
 -----
 None of us had any experience in Node or any of the technologies used but we thought it would be exciting to 
 learn something new as we go. Combine this with the extreme time constraints and the pressure of a hackathon to create your product in 24 hrs and 

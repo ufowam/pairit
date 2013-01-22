@@ -64,7 +64,8 @@ with lots of investments. You can see PairIt briefly mentioned in the prize sect
 ##Going Forward
 We were all pleased about our results on team PairIT. We have since renamed it to PairIDE and 
 are now working on PairIDE as a Capstone project at University of Toronto. You can follow updates 
-at our new [github](https://github.com/pairide/pairide) or our website www.PairIDE.com.
+at our new [github](https://github.com/pairide/pairide) or our website www.PairIDE.com. The Capstone is expected
+to finish April 3rd, 2013.
 
 
 Disclaimer about PairIt's code

@@ -10,7 +10,8 @@ participated in; three University of Toronto Undergraduates. This Toronto hackat
 participants this year. You can find more information about angel hack here at their [website](http://angelhack.ca).
 
 The theme of the hackathon was to solve any problem in about 24 hours. We chose to create a Pair Programming app,
-to allow remote users to easily collaborate with no downloads or any plugins. We called this prototype PairIT.
+to allow remote users to easily collaborate with no downloads or any plugins. We called this prototype PairIT. The
+app was to be built on nodejs and socket.io so that we could learn something new in the process.
 
 At the end of the 24 hour sprint, we had a basic IDE that could be shared with other users in real time.
 Think of it as google docs for programmers; as you edit the file other users in the session see 

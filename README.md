@@ -78,6 +78,8 @@ many sacrifices needed to be made for immediate gains and anyone who wants to lo
 painful to read. 
 
 
+Thanks to ajrod for making this awesome readme file.
+
 
 
 
